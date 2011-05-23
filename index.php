@@ -118,6 +118,10 @@
 				border-top: 1px solid #ccc;
 				padding: 20px;
 			}
+			.next {
+				padding: 5px 10px;
+			}
+
 		</style>
 		<script type="text/javascript">
 
@@ -144,21 +148,22 @@
 		<div id="is">
 			<p>
 				Come <strong>hack</strong>, <strong>learn</strong>, <strong>build</strong>, <strong>teach</strong>, <strong>share</strong> and <strong>create</strong>.<br />
-				<span class="smaller">The next SE Hack Day has not been scheduled yet.</span>
 			</p>
 		</div>
 		<div class="line"></div>
 
 		<?php
 			$db = new SQLite3('hackday.db');
-			$hackdays = $db->query("select * from hackdays");
+			$hackdays = $db->query("select * from hackdays order by ordering desc");
 			while($hackday = $hackdays->fetchArray()):
 		?>
 		<div class="title"><div class="number">#<?=$hackday['ordering'] ?></div><?=date("F j, Y", strtotime($hackday['date'])) ?> @ <?=$hackday['location'] ?>
 		<div class="container">
 			<?php
-				$hacks = $db->query("select * from hacks left join hackers on hacks.hacker_id = hackers.id");
-				while($hack = $hacks->fetchArray()):
+				$hacks = $db->query("select * from hacks left join hackers on hacks.hacker_id = hackers.id where hackday_id = ".$hackday['id']);
+				$numHacks = $db->querySingle("select count(*) from hacks where hackday_id = ".$hackday['id']);
+				if($numHacks):
+					while($hack = $hacks->fetchArray()):
 			?>
 				<div class="hack">
 					<div class="image"><img src="img/<?=$hackday[1] ?>/<?=$hack[5] ?>" title="<?=$hack[2] ?>" alt="<?=$hack[2] ?>" /></div>
@@ -177,7 +182,16 @@
 						<?=$hack[3] ?>
 					</div>
 				</div>
-			<?php endwhile; ?>
+			<?php
+					endwhile;
+				else:
+			?>
+				<div class="next">
+					The next SE Hack Day is scheduled for <?=date("F j, Y", strtotime($hackday['date'])) ?> at <?=$hackday['location'] ?>. Check back later for more info.
+				</div>			
+			<?php
+				endif;
+			?>
 		</div>
 		<?php
 			endwhile;
