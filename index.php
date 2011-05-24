@@ -75,6 +75,7 @@
 				text-align: center;
 				margin-top: 10px;
 				font-size: 18px;
+				color: #aaa;
 			}
 
 			.container {
@@ -148,6 +149,7 @@
 		<div id="is">
 			<p>
 				Come <strong>hack</strong>, <strong>learn</strong>, <strong>build</strong>, <strong>teach</strong>, <strong>share</strong> and <strong>create</strong>.<br />
+				<span class="smaller">SE Hack Day is an event for students at the University of Waterloo.</span>
 			</p>
 		</div>
 		<div class="line"></div>
