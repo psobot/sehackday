@@ -122,7 +122,6 @@
 			.next {
 				padding: 5px 10px;
 			}
-
 		</style>
 		<script type="text/javascript">
 
