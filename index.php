@@ -188,7 +188,7 @@
 				else:
 			?>
 				<div class="next">
-					The next SE Hack Day is scheduled for <?=date("F j, Y", strtotime($hackday['date'])) ?> at <?=$hackday['location'] ?>. Check back later for more info.
+					The next SE Hack Day is scheduled for <?=date("F j, Y", strtotime($hackday['date'])) ?> at <?=$hackday['location'] ?>.
 				</div>			
 			<?php
 				endif;
