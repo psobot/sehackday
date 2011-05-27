@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+i<!DOCTYPE html>
 <html>
 	<head>
 		<title>SE Hack Day</title>
@@ -188,7 +188,23 @@
 				else:
 			?>
 				<div class="next">
-					The next SE Hack Day is scheduled for <?=date("F j, Y", strtotime($hackday['date'])) ?> at <?=$hackday['location'] ?>.
+This is how it works:<br />
+<br />
+<ol>
+	<li>You show up with a laptop and a project to work on</li>
+	<li>You hack on your project until late into the night</li>
+	<li>You demo what you've worked on.</li>
+</ol>
+Your project can either be something completely new for the hackathon, or it can be something you've already started.<br />
+<br />
+Rules:<br />
+<ol>
+<li>You must tweet about #sehackday.</li>
+<li>You MUST tweet about #sehackday.</li>
+<li>If we haven't seen your hack, you must demo.</li>
+<li>You have a maximum of 5 minutes for demo and Q&amp;A.</li>
+<li>If you're in the demo area STFU or GTFO (of demo area).</li>
+</ol>
 				</div>			
 			<?php
 				endif;
