@@ -1,4 +1,4 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>SE Hack Day</title>
