@@ -33,8 +33,8 @@ namespace :deploy do
   end
   
   task :apply_configs, :roles => :app do
-    run "cp #{shared_path}/database.yml #{release_path}/config/database.yml"
-    run "cp #{shared_path}/settings.yml #{release_path}/config/settings.yml"
+    run "ln -s #{shared_path}/database.yml #{release_path}/config/database.yml"
+    run "ln -s #{shared_path}/settings.yml #{release_path}/config/settings.yml"
   end
   
   task :create_branch_file, :roles => :app, :except => { :no_symlink => true } do
