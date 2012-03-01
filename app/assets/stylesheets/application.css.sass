@@ -1,0 +1,104 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree .
+
+body
+  font-family: 'Arimo', 'Helvetica', 'Arial', sans-serif
+  font-size: 18px
+  font-style: normal
+  font-weight: normal
+  text-shadow: none
+  text-decoration: none
+  text-transform: none
+  letter-spacing: -0.05em
+  word-spacing: 0em
+  line-height: 1
+  text-align: center
+  color: #eee
+  padding-top: 20px
+  background: #0c0017
+
+a
+  color: #fff
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+h1
+  font-size: 4em
+  margin: 0
+
+#subhead
+  font-size: 20px
+  p
+    margin: 0
+
+#is
+  width: 580px
+  margin: 30px auto
+  text-align: center
+  font-size: 25px
+
+body > .title
+  position: relative
+  width: 580px
+  margin: 30px auto
+  text-align: left
+  .number
+    font-size: 40px
+    position: absolute
+    text-align: right
+    left: -60px
+
+.line
+  margin: 20px auto
+  border-bottom: 1px solid #ccc
+  width: 580px
+
+.smaller
+  text-align: center
+  margin-top: 10px
+  font-size: 18px
+  color: #aaa
+
+.container
+  background: #eee
+  color: #0c0017
+  border-radius: 10px
+  -webkit-border-radius: 10px
+  -moz-border-radius: 10px
+  -o-border-radius: 10px
+  width: 580px
+  margin: 10px auto 30px
+  text-align: left
+  padding: 5px 0
+
+.hack
+  height: 94px
+  padding: 5px 10px
+  border-top: 1px solid #ccc
+  &:first-child
+    border-top: none
+  .title
+    padding-top: 12px
+  a
+    color: #888
+  .image
+    float: left
+    margin: 0 10px 5px 0
+  .description
+    color: #999
+    margin: 10px
+
+#footer
+  text-align: center
+  opacity: 0.4
+  color: #888
+  border-top: 1px solid #ccc
+  padding: 20px
+
+.next
+  padding: 5px 10px

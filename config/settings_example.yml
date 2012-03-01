@@ -1,0 +1,13 @@
+development:
+  host: sehackday.dev
+  incoming_key: <some_long_string>
+  secret_token: long_rails_string_for_secrecy_without_dictionary_words
+test:
+  host: test.host
+  incoming_key: <some_long_string>
+  secret_token: long_rails_string_for_secrecy_without_dictionary_words
+production:
+  host: sehackday.com
+  incoming_key: <some_long_string>
+  secret_token: long_rails_string_for_secrecy_without_dictionary_words
+
