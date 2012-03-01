@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Sehackday::Application.load_tasks
+SEHackDay::Application.load_tasks
