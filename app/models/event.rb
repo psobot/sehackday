@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   has_many :attendances
   has_many :participants, :through => :attendances
 
+  default_scope :order => 'created_at DESC'
+
   def is_in_the_future?
     Time.now < self.start
   end

@@ -4,22 +4,25 @@
       \##{event.id}
     = event.start.strftime("%B %-d, %Y")
     \@
-    = link_to event.location.full_name, event.location.url
+    = link_to event.location.name, event.location.url, :target => :blank
     - if event.is_in_the_future?
       .container
-        .next
-          = render :partial => :next
+        = render :partial => 'future'
     - elsif not event.projects.empty?
       .container
         - event.projects.each do |project|
           .hack
-            .image
-              image goes here
+            - if not project.images.empty?
+              .image
+                = image_tag project.images.first.file.url :thumb
             .title
               %strong
-                = project.link.empty? ? project.name : link_to(project.name, project.link)
+                = project.link ? link_to(project.name, project.link, :target => :blank) : project.name
               by
               - project.contributors.each do |person|
-                = link_to person.name, person.url
-              .description
-                blah
+                - if person.has_url?
+                  = link_to person.full_name, person.url, :target => :blank
+                - else
+                  = person.full_name
+            .description
+              = project.description

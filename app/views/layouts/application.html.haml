@@ -7,14 +7,13 @@
     = csrf_meta_tags
   %head
     %title SE Hack Day
-    / SE Hack Day temp site, @psobot, May 22, 2011
-    %meta{:content => "A day to hack, learn, build, teach, share and create.", :name => "description"}/
+    %meta{:content => "An event to hack, learn, build, teach, share and create.", :name => "description"}/
     %meta{:content => "text/html;charset=utf-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "SE Hack Day", :property => "og:title"}/
     %meta{:content => "non_profit", :property => "og:type"}/
     %meta{:content => request.host, :property => "og:url"}/
     %meta{:content => request.host + image_path("fb-thumb.png"), :property => "og:image"}/
-    %meta{:content => "A day to hack, learn, build, teach, share and create.", :property => "og:description"}/
+    %meta{:content => "An event to hack, learn, build, teach, share and create.", :property => "og:description"}/
     %link{:href => image_path("icon.png"), :rel => "shortcut icon", :type => "image/png"}/
     %link{:href => request.host + image_path("fb-thumb.png"), :rel => "image_src", :type => "image/png"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Arimo:regular,italic,bold&subset=latin",
@@ -37,6 +36,8 @@
     #footer
       site by
       %a{:href => "http://www.petersobot.com", :target => "_blank"} Peter Sobot
+      |
+      %a{:href => "http://github.com/psobot/sehackday"} on github
       |
       %a{:href => "mailto:sehackday@petersobot.com"} email
       |
