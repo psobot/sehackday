@@ -5,4 +5,4 @@ tmp/
 .sass-cache/
 config/database.yml
 config/settings.yml
-app/assets/images/projects/*/
+public/system/files/*

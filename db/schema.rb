@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301043918) do
+ActiveRecord::Schema.define(:version => 20120301172233) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "participant_id"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(:version => 20120301043918) do
     t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "event_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "locations", :force => true do |t|
