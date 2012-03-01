@@ -1,0 +1,25 @@
+- Event.all.each do |event|
+  .title
+    .number
+      \##{event.id}
+    = event.start.strftime("%B %-d, %Y")
+    \@
+    = link_to event.location.full_name, event.location.url
+    - if event.is_in_the_future?
+      .container
+        .next
+          = render :partial => :next
+    - elsif not event.projects.empty?
+      .container
+        - event.projects.each do |project|
+          .hack
+            .image
+              image goes here
+            .title
+              %strong
+                = project.link.empty? ? project.name : link_to(project.name, project.link)
+              by
+              - project.contributors.each do |person|
+                = link_to person.name, person.url
+              .description
+                blah

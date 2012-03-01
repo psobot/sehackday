@@ -5,6 +5,8 @@
  *= require_self
  *= require_tree .
 
+$width: 600px
+
 body
   font-family: 'Arimo', 'Helvetica', 'Arial', sans-serif
   font-size: 18px
@@ -37,14 +39,14 @@ h1
     margin: 0
 
 #is
-  width: 580px
+  width: $width
   margin: 30px auto
   text-align: center
   font-size: 25px
 
 body > .title
   position: relative
-  width: 580px
+  width: $width
   margin: 30px auto
   text-align: left
   .number
@@ -56,7 +58,7 @@ body > .title
 .line
   margin: 20px auto
   border-bottom: 1px solid #ccc
-  width: 580px
+  width: $width
 
 .smaller
   text-align: center
@@ -71,7 +73,7 @@ body > .title
   -webkit-border-radius: 10px
   -moz-border-radius: 10px
   -o-border-radius: 10px
-  width: 580px
+  width: $width
   margin: 10px auto 30px
   text-align: left
   padding: 5px 0
@@ -94,11 +96,13 @@ body > .title
     margin: 10px
 
 #footer
+  width: $width
+  margin: 20px auto
   text-align: center
   opacity: 0.4
   color: #888
   border-top: 1px solid #ccc
-  padding: 20px
+  padding: 20px 0
 
 .next
   padding: 5px 10px

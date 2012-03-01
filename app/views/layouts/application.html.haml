@@ -17,8 +17,27 @@
     %meta{:content => "A day to hack, learn, build, teach, share and create.", :property => "og:description"}/
     %link{:href => image_path("icon.png"), :rel => "shortcut icon", :type => "image/png"}/
     %link{:href => request.host + image_path("fb-thumb.png"), :rel => "image_src", :type => "image/png"}/
-    %link{
-      :href => "http://fonts.googleapis.com/css?family=Arimo:regular,italic,bold&subset=latin",
+    %link{:href => "http://fonts.googleapis.com/css?family=Arimo:regular,italic,bold&subset=latin",
       :rel => "stylesheet", :type => "text/css"}/
   %body
+    %h1
+      = image_tag "logo-white.png", :alt => "SE HACK DAY", :title => "SE HACK DAY"
+    #is
+      %p
+        Come
+        - %w{hack learn build teach share}.each do |w|
+          %strong= w + ','
+        and
+        = succeed "." do
+          %strong create
+        %br/
+        %span.smaller SE Hack Day is an event for students at the University of Waterloo.
+    .line
     = yield
+    #footer
+      site by
+      %a{:href => "http://www.petersobot.com", :target => "_blank"} Peter Sobot
+      |
+      %a{:href => "mailto:sehackday@petersobot.com"} email
+      |
+      %a{:href => "http://twitter.com/sehackday"} twitter
