@@ -7,7 +7,7 @@ class Tweet < ActiveRecord::Base
   end
 
   MUST_CONTAIN = "sehackday"
-  NEW_PROJECT = %w{ hack project demo prototype }
+  NEW_PROJECT = %w{ hack project demo prototype is }
   PHOTO_PROVIDERS = %w{ http://twitpic instagram }
 
   def self.parse tweet
@@ -48,7 +48,7 @@ class Tweet < ActiveRecord::Base
       first_url = tweet['entities']['urls'].min_by { |url| url['indices'][0] }
       project_matches = \
         tweet['text'][last_hashtag['indices'][1]+1...first_url['indices'][0]]\
-        .strip.match(/(.+)[ ]?[,-:!.;][ ]?(.+)/)
+        .strip.match(/(.+?)[ ]?[,-:!.;][ ]?(.+)/)
       project_name = project_matches[1]
       project_description = project_matches[2]
       
