@@ -38,7 +38,8 @@ namespace :deploy do
   end
 
   task :restart_listener, :roles => :app do
-    run "#{release_path}/script/"
+    run "#{release_path}/script/receive.rb stop"
+    run "#{release_path}/script/receive.rb start"
   end
   
   task :create_branch_file, :roles => :app, :except => { :no_symlink => true } do
