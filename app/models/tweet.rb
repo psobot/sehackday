@@ -104,9 +104,10 @@ class Tweet < ActiveRecord::Base
           logger.error ex
         end
       end
+      event = Event.at(time_posted)
       Contribution.create(:project_id => project.id,
                           :participant_id => user.id,
-                          :event_id => Event.at(time_posted).id)
+                          :event_id => event ? event.id : nil)
     end
 
   end
