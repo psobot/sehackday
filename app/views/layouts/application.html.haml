@@ -32,9 +32,10 @@
         %br/
         %span.smaller SE Hack Day is an event for students at the University of Waterloo.
     .line
-    .is
-      = render :partial => 'instructions'
-    .line
+    - if Event.at(Time.now)
+      .is
+        = render :partial => 'instructions'
+      .line
     = yield
     #footer
       site by
