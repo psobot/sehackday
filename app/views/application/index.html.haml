@@ -5,6 +5,9 @@
     = event.start.strftime("%B %-d, %Y")
     \@
     = link_to event.location.name, event.location.url, :target => :blank
+    - if event.is_happening_now?
+      &nbsp;&nbsp;--&nbsp;&nbsp; 
+      %strong Happening now!
     - if event.is_in_the_future?
       .container
         = render :partial => 'future'

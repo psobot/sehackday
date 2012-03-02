@@ -13,6 +13,10 @@ class Event < ActiveRecord::Base
     where("? BETWEEN start AND finish", time.utc).first
   end
 
+  def is_happening_now?
+    Time.now > self.start && Time.now < self.finish
+  end
+
   def is_in_the_future?
     Time.now < self.start
   end
