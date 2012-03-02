@@ -21,7 +21,7 @@
   %body
     %h1
       = image_tag "logo-white.png", :alt => "SE HACK DAY", :title => "SE HACK DAY"
-    #is
+    .is.big
       %p
         Come
         - %w{hack learn build teach share}.each do |w|
@@ -31,6 +31,9 @@
           %strong create
         %br/
         %span.smaller SE Hack Day is an event for students at the University of Waterloo.
+    .line
+    .is
+      = render :partial => 'instructions'
     .line
     = yield
     #footer
