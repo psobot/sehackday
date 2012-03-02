@@ -9,6 +9,10 @@ class Event < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
 
+  def self.at time
+    where("? BETWEEN start AND finish", time.utc).first
+  end
+
   def is_in_the_future?
     Time.now < self.start
   end

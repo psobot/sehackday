@@ -7,7 +7,6 @@ class Image < ActiveRecord::Base
 
   AVAILABLE_HOSTS = %w{
     twitpic.com
-    pic.twitter.com
   }
 
   def self.download url
@@ -36,7 +35,7 @@ class Image < ActiveRecord::Base
       # OpenURI::Meta's meta attribute returns a hash of headers
       a = meta["content-disposition"].match(/filename=(.+[^;])/)[1]
     rescue NoMethodError
-      base_uri.path.split('/').last
+      base_uri.path.split('/').last.split(':').first
     end
     
     io.original_filename.blank? ? nil : io

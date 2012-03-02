@@ -3,7 +3,7 @@ require './config/boot'
 
 default_run_options[:pty] = true
 
-set :application, 'lndry'
+set :application, 'sehackday'
 set :scm,         :git
 set :repository,  'git@github.com:psobot/sehackday.git'
 set :deploy_via,  :remote_cache
@@ -36,12 +36,17 @@ namespace :deploy do
     run "ln -s #{shared_path}/database.yml #{release_path}/config/database.yml"
     run "ln -s #{shared_path}/settings.yml #{release_path}/config/settings.yml"
   end
+
+  task :restart_listener, :roles => :app do
+    run "#{release_path}/script/"
+  end
   
   task :create_branch_file, :roles => :app, :except => { :no_symlink => true } do
     run "echo #{branch} > #{release_path}/config/.git_branch"
-  end  
+  end
 end
 
 after 'deploy:update_code', 'deploy:apply_configs'
+after 'deploy:update_code', 'deploy:restart_listener'
 after 'deploy:update_code', 'deploy:create_branch_file'
 after 'deploy', 'deploy:cleanup'

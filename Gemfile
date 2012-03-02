@@ -16,6 +16,8 @@ gem 'active_link_to'
 gem 'postageapp'
 gem 'twitpic'
 gem 'mail'
+gem 'tweetstream'
+gem 'yajl-ruby'
 
 group :development do
   gem 'capistrano'
