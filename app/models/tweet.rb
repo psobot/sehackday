@@ -107,6 +107,11 @@ class Tweet < ActiveRecord::Base
                                  :description => project_description,
                                  :tweet_id => me.id)
       end
+      logger.debug(time_posted)
+      event = Event.at(time_posted)
+      Contribution.create(:project_id => project.id,
+                          :participant_id => user.id,
+                          :event_id => event ? event.id : nil)
       if not image_urls.empty?
         begin
           project.images << Image.download(image_urls.first)
@@ -114,10 +119,6 @@ class Tweet < ActiveRecord::Base
           logger.error ex
         end
       end
-      event = Event.at(time_posted)
-      Contribution.create(:project_id => project.id,
-                          :participant_id => user.id,
-                          :event_id => event ? event.id : nil)
     end
 
   end
