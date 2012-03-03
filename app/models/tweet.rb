@@ -46,11 +46,17 @@ class Tweet < ActiveRecord::Base
         end
       }
       first_url = tweet['entities']['urls'].min_by { |url| url['indices'][0] }
-      project_matches = \
+      raw_text = \
         tweet['text'][last_hashtag['indices'][1]+1...(first_url ? first_url['indices'][0] : tweet['text'].length)]\
-        .strip.match(/(.+?)[ ]?[,-:!.;][ ]?(.+)?/)
-      project_name = project_matches[1]
-      project_description = project_matches[2]
+        .strip
+      if %w{, - : ! . ;}.any? {|d| raw_text.include? d}
+        project_matches = raw_text.match(/(.+?)[ ]?[,-:!.;][ ]?(.+)?/)
+        project_name = project_matches[1]
+        project_description = project_matches[2]
+      else
+        project_name = raw_text
+        project_description = ""
+      end
       
       project_links = tweet['entities']['urls'].collect { |url|
         PHOTO_PROVIDERS.any? {
