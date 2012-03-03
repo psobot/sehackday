@@ -47,8 +47,8 @@ class Tweet < ActiveRecord::Base
       }
       first_url = tweet['entities']['urls'].min_by { |url| url['indices'][0] }
       project_matches = \
-        tweet['text'][last_hashtag['indices'][1]+1...first_url['indices'][0]]\
-        .strip.match(/(.+?)[ ]?[,-:!.;][ ]?(.+)/)
+        tweet['text'][last_hashtag['indices'][1]+1...(first_url ? first_url['indices'][0] : tweet['text'].length)]\
+        .strip.match(/(.+?)[ ]?[,-:!.;][ ]?(.+)?/)
       project_name = project_matches[1]
       project_description = project_matches[2]
       
@@ -59,15 +59,19 @@ class Tweet < ActiveRecord::Base
       }.compact
 
 
-      image_urls = tweet['entities']['media'].collect do |media|
-        if media['type'] == "photo"
-          if media['sizes'].include? 'large'
-            media['media_url'] + ":" + 'large'
-          else
-            media['media_url']
+      image_urls = if tweet['entities'].include? 'media'
+        tweet['entities']['media'].collect do |media|
+          if media['type'] == "photo"
+            if media['sizes'].include? 'large'
+              media['media_url'] + ":" + 'large'
+            else
+              media['media_url']
+            end
           end
-        end
-      end.compact
+        end.compact
+      else
+        []
+      end
 
       #TODO: get exact lat/lng values here
       lat = 0
