@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :location
   has_many :contributions
-  has_many :projects, :through => :contributions
+  has_many :projects, :through => :contributions, :uniq => true
   has_many :attendances
   has_many :participants, :through => :attendances
 
