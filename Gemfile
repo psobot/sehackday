@@ -25,8 +25,7 @@ end
 
 group :production, :staging do
   gem 'execjs'
-  gem 'libv8', '~> 3.11.8.3', :platform => :ruby
-  gem 'therubyracer'
+  gem 'therubyracer',   '~> 0.11.1'
 end
 
 group :assets do
