@@ -24,8 +24,8 @@
               by
               - project.contributors.each do |person|
                 - if person.has_url?
-                  = link_to person.full_name, person.url, :target => :blank
+                  = link_to person.display_name, person.url, :target => :blank
                 - else
-                  = person.full_name
+                  = person.display_name
             .description
               = project.description

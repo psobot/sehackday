@@ -37,18 +37,25 @@ class ApplicationController < ActionController::Base
 
         if name.start_with? "@"
             match = Participant.find_by_username name[1..-1]
+            if match.nil?
+                match = Participant.create :username => name[1..-1]
+            end
         end
+
         if match.nil?
             match = Participant.find_by_full_name name
             if match.nil?
                 if name.split(" ").length == 2
                     first, last = name.split(' ')
                     match = Participant.create :full_name => name, :first_name => first, :last_name => last
+                    match.save!
                 else
                     match = Participant.create :full_name => name
+                    match.save!
                 end
             end
         end
+
         match
     end
 

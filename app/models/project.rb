@@ -6,7 +6,6 @@ class Project < ActiveRecord::Base
 
   alias :contributors :participants
 
-  validates_uniqueness_of :link
   accepts_nested_attributes_for :images
 
   def self.find_by_name_or_links name, links

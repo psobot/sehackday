@@ -21,4 +21,12 @@ class Participant < ActiveRecord::Base
   def url
     "http://twitter.com/#{self.username}"
   end
+
+  def display_name
+    if full_name.nil?
+      "@" + username
+    else
+      full_name
+    end
+  end
 end
