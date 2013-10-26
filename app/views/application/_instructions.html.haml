@@ -1,23 +1,26 @@
 .instructions
-  .smaller
-    To add your hack to the list, just tweet
-    with the hashtag
-  %br/
-  %strong #sehackday
-  %br/
-  %br/
-  .smaller
-    and put the tag
-  %br/
-  %strong{:title => "(or #demo, or #project, or #is)"} #hack
-  %br/
-  %br/
-  .smaller
-    %strong before
-    your project's name.
-  .smaller.still
-    (If something goes wrong, just tweet at
-    = link_to "@psobot", "http://twitter.com/psobot", :target => :blank
-    to get your submission fixed.)
-  .tweet
-   
+  = form_for @project, url: {action: "create"}, :html => {:class => "form-horizontal"}  do |f|
+    .control_group
+      = f.label :name, :class => "control-label"
+      .controls
+        = f.text_field :name, :placeholder => "Name of your hack"
+    .control_group
+      = f.label :participants, "Built by", :class => "control-label" 
+      .controls
+        = f.text_field :participants, :placeholder => "@twitter names preferred. If multiple, separate by commas.", :value => nil
+    .control_group
+      = f.label :link, :class => "control-label"
+      .controls
+        = f.text_field :link, :placeholder => "Optional, but a demo link (or GitHub) would be nice."
+    .control_group
+      = f.label :description, :class => "control-label"
+      .controls
+        = f.text_area :description, size: "20x4", :placeholder => "Write a little blurb, if you'd like."
+    .control_group
+      = f.label :screenshot, "Optional Screenshot", :class => "control-label"
+      .controls
+        = f.fields_for :photos do |photo|
+          = photo.file_field :image
+    .control_group
+      .controls
+        = f.submit "Submit my hack!", :class => "btn btn-success"

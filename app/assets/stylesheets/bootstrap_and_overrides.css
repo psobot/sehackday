@@ -1,0 +1,126 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+
+body {
+  font-family: "Arimo", "Helvetica", "Arial", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: -0.05em;
+  word-spacing: 0em;
+  line-height: 1;
+  color: #eeeeee;
+  padding-top: 20px;
+  background-color: #0c0017; }
+
+a {
+  color: white;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+h1 {
+  font-size: 4em;
+  margin: 0;
+  text-align: center; }
+
+#subhead {
+  font-size: 20px; }
+  #subhead p {
+    margin: 0; }
+
+.is {
+  width: 600px;
+  margin: 30px auto;
+  line-height: 1.25em; }
+
+.big {
+  text-align: center;
+  font-size: 25px; }
+
+body > .title {
+  position: relative;
+  width: 600px;
+  margin: 30px auto;
+  text-align: left; }
+  body > .title .number {
+    font-size: 40px;
+    position: absolute;
+    text-align: right;
+    left: -120px;
+    width: 100px; }
+
+label {
+    font-size: 18px;
+}
+input, textarea {
+    width: 400px;
+    margin-bottom: 5px !important;
+}
+
+.line {
+  margin: 20px auto;
+  border-bottom: 1px solid #cccccc;
+  width: 600px; }
+
+.smaller {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #aaaaaa; }
+  .smaller.still {
+    font-size: 12px; }
+
+.container {
+  background: #eeeeee;
+  color: #0c0017;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  width: 600px;
+  margin: 10px auto 30px;
+  text-align: left;
+  padding: 5px 0; }
+
+.hack {
+  height: 94px;
+  padding: 5px 10px;
+  border-top: 1px solid #cccccc; }
+  .hack:first-child {
+    border-top: none; }
+  .hack .title {
+    padding: 12px 10px 0; }
+  .hack a {
+    color: #888888; }
+  .hack .image {
+    float: left;
+    margin: 0 10px 5px 0; }
+  .hack .description {
+    color: #999999;
+    margin: 10px; }
+
+.smalltext {
+  color: #999999;
+  font-size: 0.9em;
+  display: inline; }
+
+#footer {
+  width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  opacity: 0.4;
+  color: #888888;
+  border-top: 1px solid #cccccc;
+  padding: 20px 0; }
+
+.next {
+  padding: 5px 10px; }

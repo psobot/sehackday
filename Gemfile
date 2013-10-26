@@ -38,5 +38,6 @@ group :test do
   gem 'faker'
 end
 
-
+gem "twitter-bootstrap-rails"
+gem "ipaddress"
 gem "devise"
