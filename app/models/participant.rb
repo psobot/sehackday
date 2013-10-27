@@ -4,8 +4,6 @@ class Participant < ActiveRecord::Base
   has_many :projects, :through => :contributions, :uniq => true
   has_many :attendances
 
-  validates_uniqueness_of :username
-
   def self.find_or_create_by_user_from_tweet u, t
     f = find_by_username(u['screen_name'])
     f ? f : create(:username => u['screen_name'],
