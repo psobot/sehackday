@@ -9,6 +9,10 @@ class Event < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
 
+  def self.most_recent
+    first
+  end
+
   def self.at time
     where("? BETWEEN start AND finish", time.utc).first
   end

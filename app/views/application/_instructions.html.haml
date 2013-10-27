@@ -1,9 +1,13 @@
 .instructions
   = form_for @project, url: {action: "create"}, :html => {:class => "form-horizontal"}  do |f|
+    - if @admin_post
+      .control_group
+        .controls
+          (Posting late for event ##{@event.id} as administrator.)
     .control_group
       = f.label :name, :class => "control-label"
       .controls
-        = f.text_field :name, :placeholder => "Name of your hack"
+        = f.text_field :name, :placeholder => "Name of #{@admin_post ? "the" : "my"} hack."
     .control_group
       = f.label :participants, "Built by", :class => "control-label" 
       .controls
@@ -15,7 +19,7 @@
     .control_group
       = f.label :description, :class => "control-label"
       .controls
-        = f.text_area :description, size: "20x4", :placeholder => "Write a little blurb, if you'd like."
+        = f.text_area :description, size: "20x4", :placeholder => "#{@admin_post ? "A" : "Write a"} little blurb, if #{@admin_post ? "available" : "you'd like"}."
     .control_group
       = f.label :screenshot, "Optional Screenshot", :class => "control-label"
       .controls
@@ -23,4 +27,4 @@
           = photo.file_field :image
     .control_group
       .controls
-        = f.submit "Submit my hack!", :class => "btn btn-success"
+        = f.submit "Submit #{@admin_post ? "this" : "my"} hack!", :class => "btn btn-success"

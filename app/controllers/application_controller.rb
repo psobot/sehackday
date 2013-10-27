@@ -1,12 +1,19 @@
 class ApplicationController < ActionController::Base
 
   def index
-    @event = Event.at Time.now.utc
-    @can_post = unless @event.nil?
-        ipblock = IPAddress @event.location.ip_block
-        ipblock.include? IPAddress(request.remote_ip)
+    if user_signed_in?
+        @event = Event.most_recent
+        @can_post = true
+        @admin_post = true
     else
-        false
+        @event = Event.at Time.now.utc
+        @admin_post = false
+        if @event.nil?
+            @can_post = false
+        else
+            @ipblock = IPAddress @event.location.ip_block
+            @can_post = @ipblock.include? IPAddress(request.remote_ip) 
+        end
     end
     @project = Project.new if @can_post 
     render
@@ -16,13 +23,17 @@ class ApplicationController < ActionController::Base
     # => I realize how un-idiomatic this Rails code is, but the event
     # => is tonight and I have other things to hack on. Just do it.
 
-    @event = Event.at Time.now.utc
-    @ipblock = IPAddress @event.location.ip_block
-    redirect_to :root if @event.nil?
+    if user_signed_in?
+        @event = Event.most_recent
+    else
+        @event = Event.at Time.now.utc
+        @ipblock = IPAddress @event.location.ip_block
+        redirect_to :root if @event.nil?
 
-    unless @ipblock.include? IPAddress(request.remote_ip)
-        flash[:error] = "Whoops! You have to be at the event to post!"
-        redirect_to :root
+        unless @ipblock.include? IPAddress(request.remote_ip) 
+            flash[:error] = "Whoops! You have to be at the event to post!"
+            redirect_to :root
+        end
     end
 
     project = Project.new
@@ -66,8 +77,7 @@ class ApplicationController < ActionController::Base
     project.save!
 
     project.participants.each do |participant|
-        participant.contributions << Contribution.create(
-            participant: participant,
+        participant.contributions << Contribution.new(
             project: project,
             event: @event
         )
