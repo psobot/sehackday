@@ -1,16 +1,7 @@
 class Participant < ActiveRecord::Base
-  belongs_to :tweet
   has_many :contributions
   has_many :projects, :through => :contributions, :uniq => true
   has_many :attendances
-
-  def self.find_or_create_by_user_from_tweet u, t
-    f = find_by_username(u['screen_name'])
-    f ? f : create(:username => u['screen_name'],
-                   :is_admin => false,
-                   :full_name => u['name'],
-                   :tweet_id => t.id)
-  end
 
   def has_url?
     !username.nil?

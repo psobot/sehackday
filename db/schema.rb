@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131026184309) do
+ActiveRecord::Schema.define(:version => 20131123201102) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "participant_id"
     t.integer  "event_id"
-    t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20131026184309) do
     t.integer  "participant_id"
     t.integer  "project_id"
     t.integer  "event_id"
-    t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -34,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20131026184309) do
     t.datetime "start"
     t.datetime "finish"
     t.integer  "location_id"
-    t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20131026184309) do
     t.string   "address"
     t.float    "lat"
     t.float    "lng"
-    t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_block"
@@ -67,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20131026184309) do
     t.string   "last_name"
     t.string   "username"
     t.boolean  "is_admin"
-    t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,7 +71,6 @@ ActiveRecord::Schema.define(:version => 20131026184309) do
     t.string   "name"
     t.string   "link"
     t.string   "description"
-    t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -93,17 +87,6 @@ ActiveRecord::Schema.define(:version => 20131026184309) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
-
-  create_table "tweets", :force => true do |t|
-    t.string   "tweet_id"
-    t.string   "username"
-    t.float    "lat"
-    t.float    "lng"
-    t.text     "raw"
-    t.boolean  "processed",  :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

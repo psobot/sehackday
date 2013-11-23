@@ -1,6 +1,4 @@
 class Event < ActiveRecord::Base
-  belongs_to :tweet
-
   belongs_to :location
   has_many :contributions
   has_many :projects, :through => :contributions, :uniq => true
